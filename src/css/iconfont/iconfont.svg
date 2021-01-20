@@ -1,0 +1,32 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2013-9-30: Created.
+-->
+<svg>
+<metadata>
+Created by iconfont
+</metadata>
+<defs>
+
+<font id="iconfont" horiz-adv-x="1024" >
+  <font-face
+    font-family="iconfont"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1024"
+    ascent="896"
+    descent="-128"
+  />
+    <missing-glyph />
+    
+    <glyph glyph-name="youfanye" unicode="&#58944;" d="M113.777778-128 113.777778 896 910.222222 384 113.777778-128Z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="zuofanye" unicode="&#58947;" d="M910.222222-128 910.222222 896 113.777778 384 910.222222-128Z"  horiz-adv-x="1024" />
+
+    
+
+
+  </font>
+</defs></svg>
