@@ -6,12 +6,12 @@ const configs={
 	mode:'development',
 	devtool:'cheap-module-eval-source-map',
 	entry:{
-		order_confirm:'./src/js/index.js'
+		advertise_loop:'./src/js/index.js'
 	},
 	output:{
 		filename:'js/[name].js',
 		path:path.resolve(__dirname,'./dist'),
-		chunkFilename:'js/chunk_[name].js'
+		chunkFilename:'js/chunk_[name]'
 	},
 	externals:{
 		'jquery':'jQuery'

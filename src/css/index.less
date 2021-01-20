@@ -60,12 +60,15 @@ body {
 
 /* 上面是公共样式 */
 @icon_position:5px;
-@height:31px;
+@height:45px;
 #niugu_wrapper{
+	font-family: "宋体","楷体","Microsoft Yahei";
 	padding:2px 5px;
 	font-size: 16px;
 	p{
 		padding:2px 0;
+		font-weight:bold ;
+		color:@hvred;
 	}
 }
 #niugu_list_wrapper{
@@ -73,7 +76,7 @@ body {
 	position: relative;
 	height:@height;
 	width:100%;
-	border:1px solid @submenugray;
+	border:1px solid #aeabab;
 	overflow: hidden;
 	.ng_left_cover,.ng_right_cover,.ng_prev,.ng_next{
 		position: absolute;
@@ -99,16 +102,18 @@ body {
 		left:@icon_position;
 		top:50%;
 		transform:translateY(-50%);
-		color: @hvblue;
+		color: @gray;
 		z-index:2;
+		opacity:0.7;
 		cursor: pointer;
 	}
 	.ng_next{
 		right:@icon_position;
 		top:50%;
 		transform:translateY(-50%);
-		color: @hvblue;
+		color: @gray;
 		z-index:2;
+		opacity:0.7;
 		cursor: pointer;
 	}
 	.inner_wrapper{
@@ -117,7 +122,7 @@ body {
 		.niugu_item{
 			// transition: all 1s;
 			display: inline-block;
-			padding:3px 5px;
+			padding:10px 5px;
 			// line-height: 24px;
 			text-align: center;
 			color: white;
@@ -127,6 +132,7 @@ body {
 				display: inline-block;
 				border-radius:3px;
 				font-size:13px;
+				text-decoration: none;
 			}
 		}
 		
