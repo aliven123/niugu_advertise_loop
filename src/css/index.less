@@ -9,13 +9,11 @@
 @yellow:#eb9506;
 @submenugray:#4e4e4e;
 @hvsubmenublue:#338af9;
+
 ul,
 li,
 body,
-html,
-h3,
-h5,
-p {
+html{
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -26,19 +24,19 @@ body {
 	position: relative;
 }
 
-.fl {
+.ng_fl {
 	float: left;
 	background: none;
 	border: none;
 }
 
-.fr {
-	float: right;
-	background: none;
-	border: none;
-}
+// .ng_fr {
+// 	float: right;
+// 	background: none;
+// 	border: none;
+// }
 
-.boxs {
+.ng_boxs {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	/* Firefox */
@@ -65,10 +63,21 @@ body {
 	font-family: "宋体","楷体","Microsoft Yahei";
 	padding:2px 5px;
 	font-size: 16px;
-	p{
-		padding:2px 0;
+	overflow: hidden;
+	.niugu_type{
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		text-align: left;
+		padding:4px 5px;
 		font-weight:bold ;
+		background:@blue;
+		cursor: pointer;
+		color:white;
+	}
+	.niugu_active{
 		color:@hvred;
+		
 	}
 }
 #niugu_list_wrapper{
@@ -98,6 +107,7 @@ body {
 		background:green;
 		opacity:0;
 	}
+	// 左按钮
 	.ng_prev{
 		left:@icon_position;
 		top:50%;
@@ -107,6 +117,7 @@ body {
 		opacity:0.7;
 		cursor: pointer;
 	}
+	// 右按钮
 	.ng_next{
 		right:@icon_position;
 		top:50%;

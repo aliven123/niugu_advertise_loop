@@ -18,18 +18,6 @@ var ajaxfn = function(url, type, datatype, data, fn) {
 		}
 	});
 };
-var queryToObj = function() {
-	var res = {};
-	var search = location.search.substr(1);
-	console.log(search);
-	search.split('&').forEach(paramStr => {
-		var arr = paramStr.split('=');
-		var key = arr[0];
-		var val = arr[1];
-		res[key] = val;
-	});
-	return res;
-};
 var IsPC = function() {
 	var userAgentInfo = navigator.userAgent;
 	var Agents = ["Android", "iPhone",
@@ -45,22 +33,7 @@ var IsPC = function() {
 	}
 	return flag;
 }();
-var dataNow = (function() {
-	function checktime(i) {
-		if (i < 10) {
-			i = '0' + i;
-		};
-		return i;
-	};
-	var mydata = new Date();
-	var y = mydata.getFullYear();
-	var month = mydata.getMonth() + 1;
-	var d = checktime(mydata.getDate());
-	return y + '-' + month + '-' + d;
-})();
 export {
 	ajaxfn,
-	queryToObj,
-	IsPC,
-	dataNow
+	IsPC
 }
