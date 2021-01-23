@@ -14,13 +14,26 @@ export const COLOR_ARR=[
 		'#e9793c',
 		'#9fb2be',
 		'#f33934',
+		'#468bf3',
+		'#6d819f',
+		'#f12b6c',
+		'#c75ef8',
+		'#7e4c96',
+		'#c6470f',
+		'#ad6342',
+		'#bbd007',
+		'#617d0d',
+		'#11c79a',
+		'#df622b',
+		'#934624'
 		];
 export const NIUGU_BOARD={
-	stock:'股票',
-	future:'期货',
-	fund:'基金',
-	bond:'债券',
-	index:'指数',
-	arbitrage:'套利',
-	group:'篮子'
+	stock:'今日牛股',
+	fund:'今日牛基',
+	index:'今日牛指',
+	bond:'今日牛债',
+	future:'今日牛期',	
+	
+	// arbitrage:'今日牛套',
+	// group:'今日牛篮'
 }

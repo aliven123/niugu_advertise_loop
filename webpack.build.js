@@ -5,13 +5,16 @@ const webpack=require('webpack');
 const configs={
 	mode:'production',
 	devtool:'cheap-module-source-map',
+	// devtool:'cheap-module-eval-source-map',
 	entry:{
 		advertise_loop:'./src/js/index.js'
 	},
 	output:{
+		publicPath:'https://aupool.cn/advice',
 		filename:'js/[name].js',
 		path:path.resolve(__dirname,'./dist'),
-		chunkFilename:'js/chunk_[name]'
+		chunkFilename:'js/chunk_[name]',
+		libraryTarget:'umd'
 	},
 	externals:{
 		'jquery':'jQuery'

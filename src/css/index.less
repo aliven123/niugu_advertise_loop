@@ -9,21 +9,6 @@
 @yellow:#eb9506;
 @submenugray:#4e4e4e;
 @hvsubmenublue:#338af9;
-
-ul,
-li,
-body,
-html{
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-
-body {
-	height: 100%;
-	position: relative;
-}
-
 .ng_fl {
 	float: left;
 	background: none;
@@ -61,23 +46,28 @@ body {
 @height:45px;
 #niugu_wrapper{
 	font-family: "宋体","楷体","Microsoft Yahei";
-	padding:2px 5px;
+	padding:2px 3px;
 	font-size: 16px;
 	overflow: hidden;
-	.niugu_type{
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-		text-align: left;
-		padding:4px 5px;
-		font-weight:bold ;
-		background:@blue;
-		cursor: pointer;
-		color:white;
-	}
-	.niugu_active{
-		color:@hvred;
-		
+	.ng_menu_wrapper{
+		margin-bottom: 3px;
+		.niugu_type{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			text-align: left;
+			padding:4px 5px;
+			font-weight:bold ;
+			font-size: 14px;
+			// background:@blue;
+			cursor: pointer;
+			// border-bottom:1px solid @gray;
+			color:@gray;
+		}
+		.niugu_active{
+			color:@hvred;
+			border-bottom:1px solid @hvred;
+		}
 	}
 }
 #niugu_list_wrapper{

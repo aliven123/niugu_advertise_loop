@@ -10,16 +10,19 @@ function color16() {
 	//十六进制随机颜色,并且不能接近蓝色
 	let index = Math.floor(Math.random() * COLOR_ARR.length);
 	return COLOR_ARR[index];
-};	
-	// 开发环境使boan_jq映射到$,并绑定到window上，使全局可用，严格模式必须使用window绑定
-	// boan_jq生成环境可用，是因为nujin防冲突配置,已经设置jq的别名；
-	if(location.href.includes('localhost')){window.boan_jq=$};
-	if(IsPC===false){window.boan_jq=$};
+};
+	var nujin_jq= jQuery.noConflict();
+	$=null;
+	console.log(nujin_jq);
+	console.log($);
 	(function(){
+		
+		
+		// console.log(IsPC);
 		class NiuguMenus {
 			// 导航菜单类
 			constructor(){
-				this.menu_wrapper=boan_jq('#niugu_wrapper').find('.ng_menu_wrapper').eq(0);
+				this.menu_wrapper=$('#niugu_wrapper').find('.ng_menu_wrapper').eq(0);
 				this.board={
 					def:'stock',
 					niugu_active:'niugu_active',
@@ -32,7 +35,7 @@ function color16() {
 				let oFragment='';
 				let niugu_type='';
 				for(let [key,val] of Object.entries(this.board.list)){
-					// console.log(this.board.def);
+					console.log(this.board.def);
 					niugu_type=key===this.board.def?'niugu_active':'';
 					oFragment+=`
 						<p class="ng_boxs niugu_type ng_fl ${niugu_type}" type="${key}">${val}</p>
@@ -44,12 +47,12 @@ function color16() {
 				const menu_list=this.menu_wrapper.find('.niugu_type');
 				const that=this;
 				for(let menu of Array.from(menu_list)){
-					boan_jq(menu).on('click',function(){
-						that.board.def=boan_jq(this).attr('type');
+					$(menu).on('click',function(){
+						that.board.def=$(this).attr('type');
 						that.renderNiuguType();
 						that.bindClick();
 						niugu_loop.clearTimer();
-						// console.log(that.board.def);
+						console.log(that.board.def);
 						niugu_loop.renderNiu_Wrapper(that.board.def);
 					})
 				}
@@ -73,7 +76,7 @@ function color16() {
 				this.renderNiu_Wrapper();
 			}
 			clearTimer(){
-				// console.log(this.inner_wrapper.get(0).timer);
+				console.log(this.inner_wrapper.get(0).timer);
 				clearInterval(this.inner_wrapper.get(0).timer);
 			}
 			getNiuguData() {
@@ -83,7 +86,7 @@ function color16() {
 				};
 				return new Promise((resolve, reject) => {
 					niuguAjax(`${host}/quan_language/nujin_scroll_bar/`, 'GET', 'json', {"type":this.niugu_type}, (res) => {
-						// let niugu_list_wrapper=boan_jq('#niugu_list_wrapper');
+						// let niugu_list_wrapper=$('#niugu_list_wrapper');
 						resolve(res)
 					})
 				})
@@ -109,12 +112,12 @@ function color16() {
 				});
 			}
 			async renderNiu_Wrapper(niugu_type) {
-				// console.log(niugu_type);
+				console.log(niugu_type);
 				if(niugu_type!==undefined){this.niugu_type=niugu_type};
 				const {
 					result: res
 				} = await this.getNiuguData();
-				// console.log(res);
+				console.log(res);
 				let oFragment = '';
 				let href = `https://nujin.com/forum.php?mod=forumdisplay&sort_id=1&fid=`;
 				if(Array.isArray(res) && res.length>0){
@@ -148,14 +151,14 @@ function color16() {
 			}
 			countInnerWidth(index) {
 				let width = 0;
-				const niugu_item = Array.from(boan_jq('#niugu_list_wrapper .niugu_item'));
+				const niugu_item = Array.from($('#niugu_list_wrapper .niugu_item'));
 				if (index === undefined) {
 					for (const item of niugu_item) {
-						width += boan_jq(item).outerWidth(true);
+						width += $(item).outerWidth(true);
 					};
 				} else {
 					for (let i = 0; i < index; i++) {
-						width += boan_jq(niugu_item[i]).outerWidth(true);
+						width += $(niugu_item[i]).outerWidth(true);
 					}
 				};
 
@@ -207,7 +210,7 @@ function color16() {
 				// 向前向后按钮的显隐，以及遮罩层的显隐
 				const ng_left_cover = this.root_el.find('.ng_left_cover').eq(0);
 				const ng_right_cover = this.root_el.find('.ng_right_cover').eq(0);
-				// console.log(boan_jq(ng_right_cover));
+				// console.log($(ng_right_cover));
 				// return;
 				if (IsPC === false) {
 					const btn_style = {
@@ -234,10 +237,10 @@ function color16() {
 				const root_width = this.root_el.width();
 				let width = 0;
 				let max_index = false;
-				const niugu_item = Array.from(boan_jq('#niugu_list_wrapper .niugu_item'));
+				const niugu_item = Array.from($('#niugu_list_wrapper .niugu_item'));
 				const len = niugu_item.length;
 				for (let i = len - 1; i >= 0; i--) {
-					width += boan_jq(niugu_item[i]).outerWidth(true);
+					width += $(niugu_item[i]).outerWidth(true);
 					if (width > root_width) {
 						max_index = i
 						return max_index + 1
@@ -265,7 +268,7 @@ function color16() {
 					const list = this.inner_wrapper.children('.niugu_item').eq(0).get(0);
 					this.inner_wrapper.get(0).insertBefore(niugu_item, list);
 					this.inner_wrapper.css({
-						'left': -boan_jq(niugu_item).outerWidth(true) + 'px'
+						'left': -$(niugu_item).outerWidth(true) + 'px'
 					});
 				}
 			}
@@ -343,8 +346,8 @@ function color16() {
 				}, 30)
 			}
 		};
-		let niugu_inner_wrapper = boan_jq('#niugu_list_wrapper .inner_wrapper');
-		let niugu_list_wrapper = boan_jq('#niugu_list_wrapper');
+		let niugu_inner_wrapper = $('#niugu_list_wrapper .inner_wrapper');
+		let niugu_list_wrapper = $('#niugu_list_wrapper');
 		const niugu_menus=new NiuguMenus();
 		const niugu_loop=new NiuguLoop(niugu_inner_wrapper,niugu_list_wrapper,niugu_menus.board.def);
 	})();

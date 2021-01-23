@@ -1,6 +1,6 @@
 var ajaxfn = function(url, type, datatype, data, fn) {
 	/*异步调用函数*/
-	$.ajax({
+	boan_jq.ajax({
 		"url": url,
 		"type": type,
 		"async": true,
