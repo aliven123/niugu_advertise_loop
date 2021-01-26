@@ -50,6 +50,10 @@ function color16() {
 						that.bindClick();
 						niugu_loop.clearTimer();
 						// console.log(that.board.def);
+						console.log(niugu_loop.inner_wrapper);
+						boan_jq(niugu_loop.inner_wrapper).css({
+							'left':'0px'
+						});
 						niugu_loop.renderNiu_Wrapper(that.board.def);
 					})
 				}
@@ -114,16 +118,16 @@ function color16() {
 				const {
 					result: res
 				} = await this.getNiuguData();
-				// console.log(res);
+				console.log(res);
 				let oFragment = '';
-				let href = `https://nujin.com/forum.php?mod=forumdisplay&sort_id=1&fid=`;
+				let href = `https://nujin.com/forum.php?mod=forumdisplay&`;
 				if(Array.isArray(res) && res.length>0){
 					this.loop_switch=true;
 					for (const item of res) {
 						let random_color = color16();
 						oFragment +=
 							`<div class="niugu_item ng_boxs ng_fl">
-								<a href="${href+item.fid}" style="background:${random_color}" class="ng_boxs">
+								<a href="${href}sort_id=${item.indicname}&fid=${item.fid}" style="background:${random_color}" class="ng_boxs">
 									${item.codename}
 								</a>
 							</div>
@@ -270,8 +274,13 @@ function color16() {
 				}
 			}
 			handleBtn() {
-				// 向前向后按钮的事件
+				// 左右按钮的事件
 				let obj = this.inner_wrapper.get(0);
+				if(obj.bStop===false){return};
+				// 避免在节点上多次绑定事件
+				this.ng_prev.off('click');
+				this.ng_next.off('click');
+				
 				this.ng_prev.on('click', () => {
 					// 左按钮事件
 					if (this.inner_width <= this.root_el.width()) {
@@ -313,8 +322,6 @@ function color16() {
 					}
 				};
 				obj.timer = setInterval(function() {
-					// console.log(obj);
-					// console.log(obj.timer);
 					obj.bStop = true;
 					for (const attr of Object.keys(json)) {
 						var icur = 0;
